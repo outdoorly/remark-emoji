@@ -3,9 +3,10 @@ import { emoticon } from 'emoticon';
 import { findAndReplace, type Find, type Replace } from 'mdast-util-find-and-replace';
 import type { Plugin } from 'unified';
 import type { Root, Nodes, Text } from 'mdast';
+import XRegExp from 'xregexp';
 
 const RE_EMOJI = /:\+1:|:-1:|:[\w-]+:/g;
-const RE_SHORT = /(?<=\s|^)[@$|*'",;.=:\-)([\]\\/<>038BOopPsSdDxXzZ]{2,5}(?=\s|$|[.?!,])/g;
+const RE_SHORT = XRegExp('(?<=\\s|^)[@$|*\'",;.=:\\-)([\\]\\\\/<>038BOopPsSdDxXzZ]{2,5}(?=\\s|$|[.?!,])', 'g');
 const RE_PUNCT = /(?:_|-(?!1))/g;
 
 /**
